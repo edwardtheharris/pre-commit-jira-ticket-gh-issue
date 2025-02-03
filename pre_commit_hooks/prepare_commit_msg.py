@@ -53,7 +53,10 @@ def get_git_username():
 
 
 def parse_branch_name(branch: str) -> dict:
-    """Use regex to pull the issue number from the branch name."""
+    """Use regex to pull the issue number from the branch name.
+
+    :param str branch: The git branch name
+    """
     ret_value = {}
     regex_match = re.match(r"^(\d*)(.*)", branch)
     try:
