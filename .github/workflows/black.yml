@@ -1,17 +1,16 @@
 ###
-# ```{rubric} PyLint
+# ```{rubric} Black
 # ```
 # ---
-# For most Python projects PyLint is sufficient for ensuring legible code of
-# decent quality.
+# Run black to make sure the Python is compliant.
 #
-# ```{literalinclude} /.github/workflows/pylint.yml
-# :caption: .github/workflows/pylint.yml#name
+# ```{literalinclude} /.github/workflows/black.yml
+# :caption: .github/workflows/black.yml#name
 # :language: yaml
-# :start-at: "name: PyLint\n"
-# :end-before: "###\n"
+# :start-at: "name: Black\n"
+# :end-before: "####\n"
 # ```
-name: PyLint
+name: Black
 permissions:
   contents: read
 on:
@@ -19,16 +18,17 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+####
 
 ###
-# ```{rubric} PyLint Jobs
+# ```{rubric} Jobs
 # ```
 # ---
-# Define the jobs that run in the PyLint workflow. Might like to add some
+# Define the jobs that run in the black workflow. Might like to add some
 # reporting to the PR on the results from these at some point.
 #
-# ```{literalinclude} /.github/workflows/pylint.yml
-# :caption: .github/workflows/pylint.yml#jobs
+# ```{literalinclude} /.github/workflows/black.yml
+# :caption: .github/workflows/black.yml#jobs
 # :language: yaml
 # :start-at: "jobs:\n"
 # ```
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
     steps:
     - uses: actions/checkout@main
     - name: Set up Python ${{ matrix.python-version }}
@@ -49,7 +49,6 @@ jobs:
         python -m pip install --upgrade pip pipenv
         pipenv requirements --dev > reqs
         pip3 install -r reqs
-    - name: Analysing the code with pylint
+    - name: Analyzing the code with black
       run: |
-        pylint $(git ls-files '*.py')
-
+        black .
