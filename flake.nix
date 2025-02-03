@@ -25,14 +25,14 @@
               pkgs.python313Packages.pip
               pkgs.pipenv
               pkgs.pre-commit
-            ]
+            ];
+            shellHook = ''
+              export PIPENV_VENV_IN_PROJECT=1
+              python3 -m pip install -U pip pipenv
+              pipenv install
+              pipenv shell
+            '';
           };
-          shellHook = ''
-            export PIPENV_VENV_IN_PROJECT=1
-            python3 -m pip install -U pip pipenv
-            pipenv install --dev
-            pipenv shell
-          '';
           docs = pkgs.mkShell {
             buildInputs = [
               pkgs.python313
