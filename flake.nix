@@ -48,6 +48,7 @@
             python3 -m pip install -U pip pipenv
             pipenv install --dev
             pipenv shell
+            sphinx-autobuild -a -b _build/html -E .
           '';
         }
       );
