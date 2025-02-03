@@ -51,16 +51,6 @@ jobs:
     steps:
       - name: assign
         uses: toshimaru/auto-author-assign@main
-  add-to-project:
-    name: Add issue to project
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/add-to-project@main
-        with:
-          # You can target a project in a different organization
-          # to the issue
-          project-url: https://github.com/orgs/platonic-io/projects/21
-          github-token: ${{ secrets.PROJECT_PAT }}
   add-to-milestone:
     runs-on: ubuntu-latest
     steps:
