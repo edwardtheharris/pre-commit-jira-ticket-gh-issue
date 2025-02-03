@@ -14,4 +14,4 @@ repos:
 # - repo: https://github.com/edwardtheharris/pre-commit-jira-ticket-gh-issue
 #   rev: v0.0.1
 #   hooks:
-#   - id: prepare-commit-msg
+#   - id: prepare-commit-message
