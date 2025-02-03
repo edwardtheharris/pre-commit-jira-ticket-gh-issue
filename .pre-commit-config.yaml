@@ -12,6 +12,6 @@ repos:
     -   id: check-yaml
     -   id: check-added-large-files
 # - repo: https://github.com/edwardtheharris/pre-commit-jira-ticket-gh-issue
-#   rev: v0.0.1
+#   rev: 4cab1c2760caceb01420cf296bf397bd2e61f7a1
 #   hooks:
 #   - id: prepare-commit-message

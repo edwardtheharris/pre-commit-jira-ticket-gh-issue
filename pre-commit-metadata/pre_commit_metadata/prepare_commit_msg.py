@@ -92,9 +92,9 @@ def prepare_message(branch_name: str, parsed_branch: dict, git_username: str):
         )
     else:
         ret_value = (
-            f'User: @{git_username}\n'
-            f'Author: {user_name} <{user_email}>\n'
-            f'Changelog: added'
+            f"User: @{git_username}\n"
+            f"Author: {user_name} <{user_email}>\n"
+            f"Changelog: added"
         )
     return ret_value
 
