@@ -4,11 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+black = "*"
+gitpython = "*"
+loguru = "*"
 pip = "*"
 pipenv = "*"
 pre-commit = "*"
-black = "*"
-gitpython = "*"
 pytest = "*"
 pytest-cov = "*"
 
