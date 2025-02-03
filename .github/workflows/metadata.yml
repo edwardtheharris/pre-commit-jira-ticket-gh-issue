@@ -45,7 +45,7 @@ jobs:
           github_token: ${{ secrets.PROJECT_PAT }}
           labels: |
             ${{ github.event.pull_request.base.ref }}
-            helm
+            python
   assign-author:
     runs-on: ubuntu-latest
     steps:
