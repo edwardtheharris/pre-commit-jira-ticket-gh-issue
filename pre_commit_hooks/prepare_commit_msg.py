@@ -46,7 +46,7 @@ def get_git_branch():
     return git_r.active_branch.name
 
 
-def get_git_username():
+def get_git_username() -> str:
     """Return the value of the git username from the configuration."""
     git_config = Repo(Path(".")).config_reader()
     return git_config.get_value("user", "username")
@@ -72,7 +72,12 @@ def parse_branch_name(branch: str) -> dict:
 
 
 def prepare_message(branch_name: str, parsed_branch: dict, git_username: str):
-    """Prepare a commit message."""
+    """Prepare a commit message.
+
+    :param str branch_name: Raw branch name
+    :param dict parsed_branch:  Dictionary of idiomatic n-grams from branch data
+    :param str git_username: Username of the committer
+    """
     if branch_name != "main":
         issue_msg = parsed_branch.get("issue_message")
         issue_num = parsed_branch.get("issue_number")
