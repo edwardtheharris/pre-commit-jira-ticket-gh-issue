@@ -1,0 +1,7 @@
+-   id: prepare-commit-message
+    name: prepare_commit_message
+    description: write commit messages if we can
+    entry: prepare-commit-message
+    language: python
+    stages: [pre-commit, pre-push, manual]
+    minimum_pre_commit_version: 3.2.0

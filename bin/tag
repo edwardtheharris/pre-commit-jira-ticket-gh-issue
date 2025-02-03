@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git log --graph --summary --output=reflog
+
+git tag -a -s -f -F reflog --create-reflog "${1}"
+
+git push origin -f "${1}"
