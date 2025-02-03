@@ -7,7 +7,7 @@
 # ```{literalinclude} /.github/workflows/pages.yml
 # :language: yaml
 # :start-at: "name: Documentation\n"
-# :end-before: "###\n"
+# :end-before: "####\n"
 # ```
 #
 # Set a name for the workflow.
@@ -20,6 +20,7 @@ on:
     branches:
       - main
   workflow_dispatch: {}
+####
 
 ###
 # ```{rubric} Permissions Updates
@@ -29,13 +30,14 @@ on:
 # ```{literalinclude} /.github/workflows/pages.yml
 # :language: yaml
 # :start-at: "permissions:\n"
-# :end-before: "###\n"
+# :end-before: "####\n"
 # ```
 permissions:
   contents: read
   issues: read
   checks: write
   pull-requests: write
+####
 
 ###
 # ```{rubric} Workflow Jobs
@@ -54,7 +56,7 @@ jobs:
   # ```{literalinclude} /.github/workflows/pages.yml
   # :language: yaml
   # :start-at: "markdownlint:\n"
-  # :end-before: "###\n"
+  # :end-before: "####\n"
   # ```
   markdownlint:
     runs-on: ubuntu-latest
@@ -73,6 +75,8 @@ jobs:
           check_name: markdown-lint
           comment_title: Markdown Lint Results
           files: markdownlint-cli2-junit.xml
+  ####
+
   ###
   # ```{rubric} Build GitHub Pages Site
   # ```
@@ -82,7 +86,7 @@ jobs:
   # ```{literalinclude} /.github/workflows/pages.yml
   # :language: yaml
   # :start-at: "  build:\n"
-  # :end-before: "###\n"
+  # :end-before: "####\n"
   # ```
   build:
     needs: markdownlint
@@ -110,6 +114,8 @@ jobs:
         uses: actions/upload-pages-artifact@main
         with:
           path: './deploy'
+  ####
+
   ###
   # ```{rubric} Deploy the Pages site
   # ```

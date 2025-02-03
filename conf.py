@@ -81,8 +81,7 @@ myst_enable_extensions = [
 myst_footnote_transition = True
 myst_title_to_header = True
 project = "Pre-Commit JIRA Ticket and GitHub Issue"
-with Path(".version").open("r", encoding="utf-8") as r_fh:
-    release = r_fh.read()
+release = get_release()
 show_authors = True
 source_suffix = {
     ".md": "markdown",
