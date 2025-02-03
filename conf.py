@@ -13,13 +13,26 @@ https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configurat
 """
 import sys
 from pathlib import Path
+import version_query
 
-sys.path.append(str(Path("ansible/files").resolve()))
-sys.path.append(str(Path("ansible/files/githooks").resolve()))
+
+def get_release():
+    """Query the current release for the project."""
+    try:
+        repo_path = Path(".")
+        ret_value = version_query.git_query.query_git_repo(repo_path).to_str()
+    except ValueError:
+        ret_value = version_query.Version.from_str("0.0.1").to_str()
+    return ret_value
+
 
 author = "Xander Harris"
 autoyaml_root = "."
-copyright = "2024, Xander Harris"
+autoyaml_doc_delimiter = "###"
+autoyaml_comment = "#"
+autoyaml_level = 10
+autoyaml_safe_loader = True
+copyright = "2025, Xander Harris"
 exclude_patterns = [
     "_build",
     "Thumbs.db",
@@ -31,7 +44,6 @@ exclude_patterns = [
 extensions = [
     "myst_parser",
     "sphinx_copybutton",
-    "sphinx_design",
     "sphinx_last_updated_by_git",
     "sphinx_git",
     "sphinx.ext.autodoc",
@@ -68,7 +80,7 @@ myst_enable_extensions = [
 ]
 myst_footnote_transition = True
 myst_title_to_header = True
-project = "Xander's Dot Files and Sundry Store"
+project = "Pre-Commit JIRA Ticket and GitHub Issue"
 with Path(".version").open("r", encoding="utf-8") as r_fh:
     release = r_fh.read()
 show_authors = True

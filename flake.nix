@@ -42,14 +42,13 @@
               pkgs.pipenv
               pkgs.pre-commit
             ];
+            shellHook = ''
+              export PIPENV_VENV_IN_PROJECT=1
+              python3 -m pip install -U pip pipenv
+              pipenv install --dev
+              pipenv run sphinx-autobuild -a -b _build/html -E . _build/auto
+            '';
           };
-          shellHook = ''
-            export PIPENV_VENV_IN_PROJECT=1
-            python3 -m pip install -U pip pipenv
-            pipenv install --dev
-            pipenv shell
-            sphinx-autobuild -a -b _build/html -E .
-          '';
         }
       );
     packages =
