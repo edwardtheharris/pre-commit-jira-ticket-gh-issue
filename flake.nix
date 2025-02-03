@@ -31,6 +31,8 @@
               python3 -m pip install -U pip pipenv
               pipenv install
               pipenv shell
+              pre-commit install
+              pre-commit install-hooks
             '';
           };
           docs = pkgs.mkShell {
@@ -55,7 +57,7 @@
         system: let
           pkgs = nixpkgs.legacyPackages.${system};
         in {
-          packages.${system}.pre-commit = nixpkgs.legacyPackages.${system}.tokenization;
+          packages.${system}.pre-commit = nixpkgs.legacyPackages.${system}.pre-commit;
           packages.${system}.default = self.packages.${system}.pre-commit;
         }
       );
